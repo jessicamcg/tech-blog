@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User, Blog } = require('../models');
 const withAuth = require('../utils/auth');
 
-module.exports = router;
 
 router.get('/', async (req, res) => {
     try {
@@ -20,4 +19,28 @@ router.get('/', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
-})
+});
+
+router.get('/blog/:id', withAuth, async (req, res) => {
+    try {
+      const blogData = await Blog.findByPk(req.params.id);
+  
+      const blog = blogData.get({ plain: true });
+  
+      res.render('blog', { blog, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+});
+
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+});
+  
+module.exports = router;
