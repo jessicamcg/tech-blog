@@ -71,6 +71,7 @@ nav a:hover {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .btn-no-style {
