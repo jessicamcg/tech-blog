@@ -34,6 +34,15 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     }
 });
 
+router.get('/dashboard', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('dashboard');
+});
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
       res.redirect('/');
