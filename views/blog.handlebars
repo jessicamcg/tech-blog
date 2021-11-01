@@ -1,8 +1,14 @@
 <section class="container">
-  <h3 class="blog-name">{{blog.title}}</h3>
-  <section class="flex-row justify-center">
-    {{#each blog as |blogs|}}
-    {{> blog-details}}
-    {{/each}}
+  <div class="card">
+    <header>
+      <h3 class="blog-name">{{blog.title}}</h3>
+    </header>
+    
+    <section class="flex-row justify-center">
+      <p>{{blog.content}}</p>
+      {{!-- {{#each comment as |comments|}}
+      {{> comment-details}}
+      {{/each}} --}}
+  </div>
   </section>
 </section>
