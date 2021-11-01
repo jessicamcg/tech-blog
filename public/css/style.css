@@ -3,7 +3,7 @@
     --secondary: #86938f;
     --tertiary: #5e877f;
     --quatrinary: #6c6b67;
-    --light: #b4ffe2;
+    --light: #e3fff4;
     --dark: #2c1818;
     --error: rgb(228, 46, 1);
     --border-radius: 0.3rem;
@@ -16,22 +16,22 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
-    background-color: var(--quatrinary);
+    background-color: var(--light);
 }
   
 a {
-    color: var(--dark);
+    color: var(--light);
     text-decoration: none;
 }
   
-a:visited {
+/* a:visited {
     color: inherit;
-}
+} */
 
 header {
     padding: 40px;
     text-align: center;
-    background: var(--primary);
+    background: var(--dark);
     color: var(--light);
 }
   
@@ -43,7 +43,7 @@ main {
 
 nav {
     display: flex;
-    background-color: var(--secondary);
+    background-color: var(--dark);
 }
   
 nav a {
@@ -95,10 +95,8 @@ nav a:hover {
     padding: 5px;
     border: 3px solid var(--dark);
     border-radius: var(--border-radius);
-    border-style: double;
-    border-width: thick;
-    background-color: #577a7c;
-    color: var(--light);
+    background-color: var(--light);
+    color: var(--dark);
 }
 
 .card header {
@@ -106,7 +104,7 @@ nav a:hover {
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;
-    background-color: var(--tertiary);
+    background-color: var(--dark);
     padding: 0.625rem;
     border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
