@@ -34,13 +34,21 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     }
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
     return;
   }
-
-  res.render('dashboard');
+  const blogData = await Blog.findAll({  // how to only display blog of the current logged in user
+    include: [{ model:User }]
+  });
+  const blogs = blogData.map((blog) => 
+      blog.get({ plain: true })
+  );
+  res.render('dashboard', {
+    blogs,
+    loggedIn: req.session.loggedIn
+  });
 });
 
 router.get('/login', (req, res) => {

@@ -84,6 +84,11 @@ nav a:hover {
     margin-left: 16px;
 }
 
+button {
+    background-color: var(--dark) !important;
+    color: var(--light) !important;
+}
+
 .card {
     margin: 20px;
     border: 7px solid var(--dark);

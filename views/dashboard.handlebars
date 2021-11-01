@@ -1,0 +1,11 @@
+<header>
+    <h1>Your Dashboard</h1>
+</header>
+
+<div class="blog">
+    <button id="new-blog-btn" class="btn btn-primary"> + New Post</button>
+    {{#each blogs as |blog|}}
+    {{> blog-details}}
+    {{/each}}
+</div>
+<script src="/public/js/newPost.js"></script>
