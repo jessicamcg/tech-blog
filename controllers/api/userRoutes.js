@@ -10,17 +10,21 @@ router.post('/', async (req, res) => {
       });
   
       req.session.save(() => {
+        
+        req.session.user_id = dbUserData.id;
         req.session.loggedIn = true;
   
         res.status(200).json(dbUserData);
       });
+
+      console.log(dbUserData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
-  });
+});
   
-    router.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
       const dbUserData = await User.findOne({
         where: {
@@ -28,6 +32,7 @@ router.post('/', async (req, res) => {
         },
       });
   
+      console.log(dbUserData);
       if (!dbUserData) {
         res
           .status(400)
@@ -45,6 +50,8 @@ router.post('/', async (req, res) => {
       }
   
       req.session.save(() => {
+        
+        req.session.user_id = dbUserData.id;
         req.session.loggedIn = true;
   
         res
@@ -55,9 +62,9 @@ router.post('/', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
-  });
+});
   
-  router.post('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
         res.status(204).end();
@@ -65,6 +72,6 @@ router.post('/', async (req, res) => {
     } else {
       res.status(404).end();
     }
-  });
+});
 
 module.exports = router;
