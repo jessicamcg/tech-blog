@@ -96,6 +96,7 @@ button {
     border-radius: 10px;
     background-color: var(--light);
     color: var(--dark);
+    width: 100%;
 }
 
 .login-card {
