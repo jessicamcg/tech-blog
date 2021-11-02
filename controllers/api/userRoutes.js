@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
         res.status(200).json(dbUserData);
       });
 
-      console.log(dbUserData);
+      // console.log(dbUserData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
         },
       });
   
-      console.log(dbUserData);
+      // console.log(dbUserData);
       if (!dbUserData) {
         res
           .status(400)

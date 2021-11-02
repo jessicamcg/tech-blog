@@ -11,11 +11,11 @@
     <button class="btn btn-primary add-comment-btn">Add a comment</button>
   </div>
 
-  <div class="card">
-      {{#each comment as |comments|}}
-      {{> comment-details}}
-      {{/each}}
-  </div>
+
+  {{#each comments as |comment|}}
+  {{> comment-details}}
+  {{/each}}
+
 </section>
 
 <script src="/js/addCommentBtn.js"></script>

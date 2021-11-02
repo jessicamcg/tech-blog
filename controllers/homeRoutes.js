@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Blog } = require('../models');
+const { User, Blog, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -23,11 +23,25 @@ router.get('/', async (req, res) => {
 
 router.get('/blog/:id', withAuth, async (req, res) => {
     try {
+      req.session.save(() => {
+        
+        req.session.blog_id = req.params.id;
+  
+      });
+
       const blogData = await Blog.findByPk(req.params.id);
   
       const blog = blogData.get({ plain: true });
+
+      const commentData = await Comment.findAll({
+        where: {
+          blog_id: req.params.id,
+        }
+      });
+
+      const comments = commentData.map((comment) => comment.get({ plain:true }));
   
-      res.render('blog', { blog, loggedIn: req.session.loggedIn });
+      res.render('blog', { blog, comments, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -40,9 +54,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
     return;
   }
   const blogData = await Blog.findAll({  // how to only display blog of the current logged in user
-    // where: {
-    //   user_id: req.session.user_id
-    // },
+    where: {
+      user_id: req.session.user_id
+    },
     include: [{ model:User }]
   });
   const blogs = blogData.map((blog) => 
