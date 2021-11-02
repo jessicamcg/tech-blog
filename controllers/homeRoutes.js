@@ -59,21 +59,19 @@ router.get('/new-blog-form', async (req,res) => {
     res.redirect('/');
     return;
   }
-  // const blogData = await Blog.findAll({  // how to only display blog of the current logged in user
-  //   // where: {
-  //   //   user_id: req.session.user_id
-  //   // },
-  //   include: [{ model:User }]
-  // });
-  // const blogs = blogData.map((blog) => 
-  //     blog.get({ plain: true })
-  // );
+
   res.render('new-blog-form');
-  // res.render('new-blog-form', {
-  //   blogs,
-  //   loggedIn: req.session.loggedIn
-  // });
-})
+
+});
+
+router.get('/add-comment', async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('add-comment');
+});
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
