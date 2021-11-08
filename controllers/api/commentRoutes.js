@@ -10,6 +10,7 @@ router.post('/', withAuth, async (req, res) => {
             content: req.body.content,
             date_posted: Date.now(),
             blog_id: req.session.blog_id, 
+            user_id: req.session.user_id,
         });
 
         console.log(commentData);

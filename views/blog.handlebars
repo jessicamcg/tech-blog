@@ -6,12 +6,13 @@
 
     <section class="flex-row justify-center">
       <p>{{blog.content}}</p>
-      <p>Posted by</p>
+      {{!-- <p>Posted by </p> --}}
     </section>
-
     <button class="btn btn-primary add-comment-btn">Add a comment</button>
+{{#if blog.user_id}}
     <button class="btn btn-primary edit-blog-btn">Edit blog post</button>
     <button class="btn btn-primary delete-blog-btn">Delete blog</button>
+  {{/if}}
   </div>
 
 

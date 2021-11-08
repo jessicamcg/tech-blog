@@ -44,7 +44,8 @@ router.get('/blog/:id', withAuth, async (req, res) => {
 
       const comments = commentData.map((comment) => comment.get({ plain:true }));
   
-      res.render('blog', { blog, 
+      res.render('blog', { 
+        blog, 
         comments, 
         loggedIn: req.session.loggedIn 
       });
@@ -53,6 +54,19 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
+});
+
+router.get('/comment/:id', withAuth, async (req, res) => {
+  try {
+
+    const commentData = await Comment.findByPk(req.params.id);
+    console.log(commentData);
+
+    res.render('edit-comment');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
