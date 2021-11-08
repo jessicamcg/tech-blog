@@ -2,38 +2,16 @@ const addCommentBtn = async (event) => {
     document.location.replace('/add-comment')
 }
 
-    
-const newCommentFormHandler = async (event) => {
-    event.preventDefault();
-    const title = document.querySelector('#new-comment-title').value.trim();
-    const content = document.querySelector('#new-comment-content').value.trim();
-    if (title && content) {
-        const response = await fetch('/api/comments', {
-            method: 'POST',
-            body: JSON.stringify({ title,content }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-        
-        if (response.ok) {
-            // document.location.replace('/dashboard');
-            history.back(); 
-        } else {
-            alert('Error: Could not create new blog post');
-        }
-    }
-
-};
-
 const deleteCommentBtn = async (event) => {
-    if (event.target.hasAttribute('comment-id')) {
-        const id = event.target.getAttribute('comment-id');
+    if (event.target.hasAttribute('data-comment-id')) {
+        const id = event.target.getAttribute('data-comment-id');
     
         const response = await fetch(`/api/comments/${id}`, {
           method: 'DELETE',
         });
     
         if (response.ok) {
-          document.location.replace('/dashboard');
+          location.reload();
         } else {
           alert('Failed to delete blog');
         }
@@ -63,6 +41,3 @@ document
     .addEventListener('click', addCommentBtn);
 
 
-// document
-//     .querySelector('.add-comment-btn-form')
-//     .addEventListener('submit', newCommentFormHandler);

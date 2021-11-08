@@ -2,9 +2,8 @@
     <a href="/comment/{{id}}">
         <header>{{title}}</header>
         <p>{{content}}</p>
-        <p>Posted by</p>
-        {{id}}
+        {{!-- <p>Posted by</p> --}}
     </a>
         <button class="btn btn-primary edit-comment-btn">Edit comment</button>
-        <button class="btn btn-primary delete-comment-btn" comment-id="{{id}}">Delete comment</button>
+        <button class="btn btn-primary delete-comment-btn" data-comment-id="{{id}}">Delete comment</button>
 </section>
