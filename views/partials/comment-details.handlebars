@@ -3,9 +3,8 @@
         <header>{{title}}</header>
         <p>{{content}}</p>
         <p>Posted by</p>
-        <button class="btn btn-primary edit-comment-btn">Edit comment</button>
-        <button class="btn btn-primary delete-comment-btn">Delete comment</button>
+        {{id}}
     </a>
+        <button class="btn btn-primary edit-comment-btn">Edit comment</button>
+        <button class="btn btn-primary delete-comment-btn" comment-id="{{id}}">Delete comment</button>
 </section>
-
-<script src="./js/editComment.js"></script>
