@@ -7,7 +7,7 @@
     <section class="flex-column align-center">
       <p>{{blog.content}}</p>
       
-      <p>Posted {{blog.date_posted}} </p>
+      <p>Posted on {{blog.date_posted}} by {{blog.user.username}}</p>
     </section>
     <button class="btn btn-primary add-comment-btn">Add a comment</button>
     {{#if blog.user_id}}

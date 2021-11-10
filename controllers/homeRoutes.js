@@ -27,13 +27,17 @@ router.get('/', async (req, res) => {
 router.get('/blog/:id', withAuth, async (req, res) => {
     try {
       req.session.save(() => {
-        
         req.session.blog_id = req.params.id;
-  
       });
 
-      const blogData = await Blog.findByPk(req.params.id);
+      const blogData = await Blog.findOne({
+        where: {
+          id: req.params.id,
+        },
+        include: [{ model:User }]
+      });
       const blog = blogData.get({ plain: true });
+      console.log(blog);
       const commentData = await Comment.findAll({
         where: {
           blog_id: req.params.id,
