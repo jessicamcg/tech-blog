@@ -33,9 +33,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       });
 
       const blogData = await Blog.findByPk(req.params.id);
-  
       const blog = blogData.get({ plain: true });
-
       const commentData = await Comment.findAll({
         where: {
           blog_id: req.params.id,
@@ -56,12 +54,21 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     }
 });
 
+router.get('/edit-blog/:id', withAuth, async (req,res) => {
+  try {
+    // const blogData = await Blog.findByPk(req.params.id);    
+    res.render('edit-blog')
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
 router.get('/comment/:id', withAuth, async (req, res) => {
   try {
-
     const commentData = await Comment.findByPk(req.params.id);
-    console.log(commentData);
-
+    // console.log(commentData);
+    res.status(200).json(commentData);
     res.render('edit-comment');
   } catch (err) {
     console.log(err);

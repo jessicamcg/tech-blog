@@ -14,6 +14,17 @@ const deleteBlogBtn = async (event) => {
       }
 };
 
+const editBlogBtn = async (event) => {
+  const id = event.target.getAttribute('data-id');
+  document.location.replace(`/edit-blog/${id}`)
+};
+
+if (document.querySelector('.edit-blog-btn')) {
+  document
+    .querySelector('.edit-blog-btn')
+    .addEventListener('click', editBlogBtn)
+}
+
 if (document.querySelector('.delete-blog-btn')) {
   document
     .querySelector('.delete-blog-btn')

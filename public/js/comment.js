@@ -20,8 +20,7 @@ const deleteCommentBtn = async (event) => {
 
 const editCommentBtn = async (event) => {
   const id = event.target.getAttribute('data-comment-id')
-    document.location.replace(`/comment/${id}`)
-    console.log('click');
+  document.location.replace(`/comment/${id}`);
 }
 
 if (document.querySelector('.edit-comment-btn')) {

@@ -10,7 +10,7 @@
     </section>
     <button class="btn btn-primary add-comment-btn">Add a comment</button>
     {{#if blog.user_id}}
-    <button class="btn btn-primary edit-blog-btn">Edit blog post</button>
+    <button class="btn btn-primary edit-blog-btn" data-id="{{blog.id}}">Edit blog post</button>
     <button class="btn btn-primary delete-blog-btn" data-id="{{blog.id}}">Delete blog</button>
     {{/if}}
   </div>
