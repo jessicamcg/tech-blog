@@ -35,6 +35,8 @@ npm i
 
 [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 
+
+![homepage](./assets/homepage.png)
 ## Live Link
 
 [heroku](https://floating-dusk-39369.herokuapp.com/)
