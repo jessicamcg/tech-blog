@@ -14,12 +14,15 @@ router.get('/', async (req,res) => {
 })
 
 router.post('/', withAuth, async (req, res) => {
+    const dateNow = Date.now();
+    const date = `${new Date(dateNow).getMonth()+1}/${new Date(dateNow).getDate()}/${new Date(dateNow).getFullYear()}`;
+        console.log(date);
     try {
         // console.log(req.session.user_id);
         const blogData = await Blog.create({
             title: req.body.title,
             content: req.body.content,
-            date_posted: Date.now(),
+            date_posted: date,
             user_id: req.session.user_id,  // help i cry
         });
 

@@ -4,9 +4,10 @@
       <h3 class="blog-name">{{blog.title}}</h3>
     </header>
 
-    <section class="flex-row justify-center">
+    <section class="flex-column align-center">
       <p>{{blog.content}}</p>
-      {{!-- <p>Posted {{ blog.date_posted}} </p> // works but not formated--}}
+      
+      <p>Posted {{blog.date_posted}} </p>
     </section>
     <button class="btn btn-primary add-comment-btn">Add a comment</button>
     {{#if blog.user_id}}
