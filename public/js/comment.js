@@ -13,13 +13,14 @@ const deleteCommentBtn = async (event) => {
         if (response.ok) {
           location.reload();
         } else {
-          alert('Failed to delete blog');
+          alert('Failed to delete comment');
         }
       }
 };
 
 const editCommentBtn = async (event) => {
-    // document.location.replace('/edit-comment')
+  const id = event.target.getAttribute('data-comment-id')
+    document.location.replace(`/comment/${id}`)
     console.log('click');
 }
 
@@ -33,8 +34,8 @@ if (document.querySelector('.delete-comment-btn')) {
     document
         .querySelector('.delete-comment-btn')
         .addEventListener('click', deleteCommentBtn)
+  // const delBtns = document.querySelectorAll
 }
-
 
 document
     .querySelector('.add-comment-btn')

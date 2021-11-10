@@ -14,7 +14,7 @@ const newCommentFormHandler = async (event) => {
             // document.location.replace('/dashboard');
             history.back(); 
         } else {
-            alert('Error: Could not create new blog post');
+            alert('Error: Could not create new comment');
         }
     }
 

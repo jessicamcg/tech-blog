@@ -14,6 +14,8 @@ const deleteBlogBtn = async (event) => {
       }
 };
 
-document
+if (document.querySelector('.delete-blog-btn')) {
+  document
     .querySelector('.delete-blog-btn')
     .addEventListener('click', deleteBlogBtn)
+}

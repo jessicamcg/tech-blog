@@ -24,7 +24,7 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
         });
 
-        console.log(commentData);
+        // console.log(commentData);
 
         res.status(200).json(commentData);
     } catch (err) {
