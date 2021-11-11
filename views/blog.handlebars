@@ -17,9 +17,10 @@
   </div>
 
 
-  <h3>Comments</h3>
+  <h3>Comments</h3>{{canEdit}}
   {{#each comments as |comment|}}
-  {{> comment-details}}
+  {{!-- {{> comment-details test=canEdit}} --}}
+  {{>comment-details}}
   {{/each}}
 
 
