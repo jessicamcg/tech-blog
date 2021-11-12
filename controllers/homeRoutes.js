@@ -43,13 +43,14 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       const commentData = await Comment.findAll({
         where: {
           blog_id: req.params.id,
-        }
+        },
+        include: [{ model:User }]
       });
 
       let comments = commentData.map((comment) => comment.get({ plain:true }));
       // let help = comments.map(comment=> ({...comment, canEditComment: true}))
       // console.log(help);
-      let help;
+      
       comments.map(e => {
         if (e.user_id == req.session.user_id) {
           // help = comments.map(comment=> ({...comment, canEditComment: true}))
@@ -60,7 +61,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
         }
         
       });
-      console.log(help);
+
       if (req.session.user_id == blog.user.id) {
         req.session.save(() => {
           req.session.canEdit = true;

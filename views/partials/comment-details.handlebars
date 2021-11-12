@@ -1,11 +1,8 @@
 <section class="card">
     <header>{{title}}</header>
     <p>{{content}}</p>
-    <p>Posted on {{date_posted}}</p>
+    <p>Posted on {{date_posted}} by {{user.username}}</p>
 
-    {{canEdit}}
-    {{test}}
-    {{session.canEdit}}
     {{#if canEditComment}}
         <button class="btn btn-primary edit-comment-btn" data-comment-id="{{id}}">Edit comment</button>
         <button class="btn btn-primary delete-comment-btn" data-comment-id="{{id}}">Delete comment</button>
