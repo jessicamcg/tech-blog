@@ -38,27 +38,54 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       });
 
       const blog = blogData.get({ plain: true });
-      console.log(blog.user.id);
-      console.log(req.session.user_id);
+      // console.log(blog.user.id);
+      // console.log(req.session.user_id);
       const commentData = await Comment.findAll({
         where: {
           blog_id: req.params.id,
         }
       });
 
-      const comments = commentData.map((comment) => comment.get({ plain:true }));
-  
+      let comments = commentData.map((comment) => comment.get({ plain:true }));
+      let help = comments.map(comment=> ({...comment, canEditComment: true}))
+      console.log(help);
+
       if (req.session.user_id == blog.user.id) {
         req.session.save(() => {
           req.session.canEdit = true;
         })
+      } else {
+        req.session.save(() => {
+          req.session.canEdit = false;
+        })
       }
+
+      // if (req.session.user_id == comments.user_id) {
+      //   req.session.save(() => {
+      //     // req.session.canEditComment = true;
+          
+      //     comments.map(e=> ({...e, canEditComment: true}))
+      //     console.log(comments);
+      //   })
+      // } else {
+      //   req.session.save(() => {
+      //     req.session.canEditComment = false;
+      //   })
+      // }
+
+      console.log(req.session.user_id);
+      console.log(comments.user_id);
+      console.log(req.session);
+
+
+
 
       res.render('blog', { 
         blog, 
         comments, 
         loggedIn: req.session.loggedIn,
-        canEdit: req.session.canEdit
+        canEdit: req.session.canEdit,
+        canEditComment: req.session.canEditComment
       });
 
     } catch (err) {

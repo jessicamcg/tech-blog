@@ -20,7 +20,25 @@
   <h3>Comments</h3>{{canEdit}}
   {{#each comments as |comment|}}
   {{!-- {{> comment-details test=canEdit}} --}}
-  {{>comment-details}}
+  {{!-- {{>comment-details}} --}}
+  <section class="card">
+    <header>{{title}}</header>
+    <p>{{content}}</p>
+    <p>Posted on {{date_posted}}</p>
+
+    {{!-- {{canEdit}}
+    {{test}}
+    {{session.canEdit}}
+    {{canEdit}}
+    {{loggedIn}} --}}
+    {{#if true}}
+        <button class="btn btn-primary edit-comment-btn" data-comment-id="{{id}}">Edit comment</button>
+        <button class="btn btn-primary delete-comment-btn" data-comment-id="{{id}}">Delete comment</button>
+    {{else}}
+      testing
+    {{/if}}
+</section>
+
   {{/each}}
 
 
