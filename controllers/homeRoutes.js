@@ -52,9 +52,11 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       let help;
       comments.map(e => {
         if (e.user_id == req.session.user_id) {
-          help = comments.map(comment=> ({...comment, canEditComment: true}))
+          // help = comments.map(comment=> ({...comment, canEditComment: true}))
+          e.canEditComment = true;
         } else {
-          help = comments.map(comment=> ({...comment, canEditComment: false}))
+          // help = comments.map(comment=> ({...comment, canEditComment: false}))
+          e.canEditComment = false;
         }
         
       });
@@ -69,10 +71,10 @@ router.get('/blog/:id', withAuth, async (req, res) => {
         })
       }
 
-      // if (req.session.user_id == comments.user_id) {
-      //   req.session.save(() => {
-      //     // req.session.canEditComment = true;
-          
+      // if (req.session.user_id == comments.user_id) {                   // original logic
+      //   req.session.save(() => {                                       // comments is array of objs!!!
+      //     // req.session.canEditComment = true;                        // comments.user_is === undefined!!!!
+                                                                          // never entered if statement, always false
       //     comments.map(e=> ({...e, canEditComment: true}))
       //     console.log(comments);
       //   })
@@ -81,7 +83,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       //     req.session.canEditComment = false;
       //   })
       // }
-      // console.log(comments);
+      console.log(comments);
       // console.log(req.session.user_id);
       // console.log(comments.user_id);
       // console.log(req.session);
@@ -94,7 +96,6 @@ router.get('/blog/:id', withAuth, async (req, res) => {
         comments, 
         loggedIn: req.session.loggedIn,
         canEdit: req.session.canEdit,
-        help
         // canEditComment: req.session.canEditComment
       });
 

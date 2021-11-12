@@ -15,6 +15,8 @@ When they click on any blog post, they are able to comment on that blog post. Th
 
 When the user clicks on the option to add a new blog post, they are prompted to fill a form with the contents of their blog post. When they submit the blog form, their blog is displayed on the homepage and on their dashboard.
 
+The user is only able to edit or delete blogs and comments that they have made. Blogs and comments belonging to other users are read-only with the option to add a comment.
+
 
 ## Installation
 ```bash
